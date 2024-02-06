@@ -5,7 +5,7 @@ use log::{ info };
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
-fn send_message(message: &str) -> String {
+fn send_message(message: &str) -> String { 
     format!("Hello, {}! You've been greeted from the BE!", message)
 }
 

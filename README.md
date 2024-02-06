@@ -1,7 +1,7 @@
-# Tauri + React
-
-This template should help get you started developing with Tauri and React in Vite.
-
-## Recommended IDE Setup
-
-- [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
+## Todo:
+[ ] Send images to api
+[ ] Collect images from API
+[ ] Style the application a bit
+[ ] A pre login screen so we can collect old messaged based on user name
+[ ] Research on how we can setup multiple images
+[ ] Decide on name  
