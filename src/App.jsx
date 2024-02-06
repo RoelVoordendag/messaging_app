@@ -5,16 +5,17 @@ import "./App.css";
 
 function App() {
   const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
 
   async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-    setGreetMsg(await invoke("send_message", { name }));
+    setGreetMsg(await invoke("send_message", { message: message }));
   }
 
   return (
     <div className="container">
       <h1>Welcome to Tauri!</h1>
+
+      <p>Welcome to conversation pit</p>
 
       <form
         className="row"
@@ -23,9 +24,10 @@ function App() {
           greet();
         }}
       >
+
         <input
           id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
+          onChange={(e) => setMessage(e.currentTarget.value)}
           placeholder="Enter a name..."
         />
         <button type="submit">Greet</button>
