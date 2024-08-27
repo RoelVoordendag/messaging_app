@@ -9,7 +9,13 @@ function App() {
   async function login() {
     setLoginMsg(`Hi ${name} we will try to log you in right now...`);
 
-    await invoke('login_user');
+    await invoke('login_user', { name: name })  
+      .then(() => console.log("success"))
+      .catch((error) =>  {
+        console.error(error);
+
+        setLoginMsg(`We currenctly can not log you in`)
+    });
   }
 
   return (

@@ -3,11 +3,11 @@
 
 use std::env;
 use dotenv::dotenv;
-use reqwest::Client;
+use reqwest::{Client, StatusCode};
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
-async fn login_user()  {
+async fn login_user(name: String) -> Result<(), String>  {
     // @todo can we move this to a auto start?
     dotenv().ok();
 
@@ -15,20 +15,15 @@ async fn login_user()  {
 
     let client = Client::new();
 
-    let res = client.post(format!("{}/", server_url));
+    let response = match client.post(format!("{}/api/users/createasdadss",server_url)).json(&serde_json::json!({"name":name})).send().await {
+        Ok(res) => res,
+        Err(_) => return Err("Something went wrong with the request".into()),
+    };
 
-    /**
-     * @todo
-     *  Do API call to /api/users/create
-     *  with body:
-     *  {
-           "name": "XXX"
-        }
-     * 
-     * Check if we get response back and then go to next screen
-     */
-
-    println!("Message from Russt: {}", server_url);
+    match response.status() {
+        StatusCode::OK => Ok(()),
+        status => Err(format!("Request failed with status: {}", status)),
+    }
 }
 
 fn main() {
