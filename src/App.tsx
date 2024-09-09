@@ -1,16 +1,23 @@
 import { useState } from "react";
 import { invoke } from "@tauri-apps/api/tauri";
 import "./App.css";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const [loginMsg, setLoginMsg] = useState("");
   const [name, setName] = useState("");
+  const navigate = useNavigate();
 
   async function login() {
     setLoginMsg(`Hi ${name} we will try to log you in right now...`);
 
     await invoke('login_user', { name: name })  
-      .then(() => console.log("success"))
+      .then((response) => {
+          // @todo send along user data
+          console.log("we are here" + response);
+
+          navigate('/rooms');
+      })
       .catch((error) =>  {
         console.error(error);
 

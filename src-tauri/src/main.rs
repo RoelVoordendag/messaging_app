@@ -15,7 +15,7 @@ async fn login_user(name: String) -> Result<(), String>  {
 
     let client = Client::new();
 
-    let response = match client.post(format!("{}/api/users/createasdadss",server_url)).json(&serde_json::json!({"name":name})).send().await {
+    let response = match client.post(format!("{}/api/users/create",server_url)).json(&serde_json::json!({"name":name})).send().await {
         Ok(res) => res,
         Err(_) => return Err("Something went wrong with the request".into()),
     };
