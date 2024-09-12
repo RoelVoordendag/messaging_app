@@ -1,13 +1,19 @@
 // Prevents additional console window on Windows in release, DO NOT REMOVE!!
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
-use std::env;
+use std::{env};
 use dotenv::dotenv;
-use reqwest::{Client, StatusCode};
+use reqwest::Client;
+use serde::{Deserialize, Serialize};
+
+#[derive(Serialize, Deserialize)]
+struct User {
+    name: String,
+}
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
-async fn login_user(name: String) -> Result<(), String>  {
+async fn login_user(name: String) -> Result<User, String>  {
     // @todo can we move this to a auto start?
     dotenv().ok();
 
@@ -20,10 +26,16 @@ async fn login_user(name: String) -> Result<(), String>  {
         Err(_) => return Err("Something went wrong with the request".into()),
     };
 
-    match response.status() {
-        StatusCode::OK => Ok(()),
-        status => Err(format!("Request failed with status: {}", status)),
+    if !response.status().is_success() {
+        return Err("Something with the request went wrong".into());
     }
+
+    let json_response: User = match response.json().await {
+        Ok(json) => json,
+        Err(_) => return Err("Failed to convert to json".into()),
+    };
+
+    Ok(json_response)
 }
 
 fn main() {

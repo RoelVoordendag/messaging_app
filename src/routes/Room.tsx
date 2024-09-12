@@ -1,7 +1,12 @@
+import { useLocation } from "react-router-dom";
+import { User } from "../types/User";
+
 export default function Rooms() {
+    const user = useLocation().state.response as User;
+
     return (
         <>
-            <p>hello welcome onto the rooms page</p>
+            <p>hallo user: {user.name}</p>
         </>
     )
 }

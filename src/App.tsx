@@ -13,15 +13,15 @@ function App() {
 
     await invoke('login_user', { name: name })  
       .then((response) => {
-          // @todo send along user data
-          console.log("we are here" + response);
-
-          navigate('/rooms');
+          // @todo check if we can impliment types here
+          console.log(response);
+          
+          navigate('/rooms', { state: { response } });
       })
       .catch((error) =>  {
         console.error(error);
 
-        setLoginMsg(`We currenctly can not log you in`)
+        setLoginMsg(`We currenctly can not log you in...`)
     });
   }
 
