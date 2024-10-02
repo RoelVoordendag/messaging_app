@@ -13,7 +13,7 @@ struct User {
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
-async fn login_user(name: String) -> Result<User, String>  {
+async fn login_user(name: String) -> Result<String, String>  {
     // @todo can we move this to a auto start?
     dotenv().ok();
 
@@ -30,7 +30,8 @@ async fn login_user(name: String) -> Result<User, String>  {
         return Err("Something with the request went wrong".into());
     }
 
-    let json_response: User = match response.json().await {
+    // We need to transform to text because array is returned not direct json.
+    let json_response: String = match response.text().await {
         Ok(json) => json,
         Err(_) => return Err("Failed to convert to json".into()),
     };
