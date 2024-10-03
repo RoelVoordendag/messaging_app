@@ -6,11 +6,6 @@ use dotenv::dotenv;
 use reqwest::Client;
 use serde::{Deserialize, Serialize};
 
-#[derive(Serialize, Deserialize)]
-struct User {
-    name: String,
-}
-
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
 async fn login_user(name: String) -> Result<String, String>  {
@@ -31,6 +26,7 @@ async fn login_user(name: String) -> Result<String, String>  {
     }
 
     // We need to transform to text because array is returned not direct json.
+    // @todo can we returns Vector here? -> probs not
     let json_response: String = match response.text().await {
         Ok(json) => json,
         Err(_) => return Err("Failed to convert to json".into()),

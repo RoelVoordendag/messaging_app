@@ -3,7 +3,7 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Rooms from "./routes/Room";
-
+import './styles.css';
 
 const router = createBrowserRouter([
   {

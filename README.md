@@ -10,6 +10,7 @@ This template should help get you started developing with Tauri, React and Types
 
 ## Todo
 - [ ] Install pretier lmao
+- [ ] Install talwind
 - [ ] Create chat overview in sidebard
 - [ ] If no rooms create room
     - [ ] Create room via endpoint but based on another user.
