@@ -17,7 +17,7 @@
         "open": true
       },
       "http": {
-        "all": true, 
+        "all": true,
         "request": true
       }
     },

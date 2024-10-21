@@ -11,18 +11,18 @@ function App() {
   async function login() {
     setLoginMsg(`Hi ${name} we will try to log you in right now...`);
 
-    await invoke('login_user', { name: name })  
+    await invoke("login_user", { name: name })
       .then((response) => {
-          // @todo check if we can impliment types here
-          console.log(response);
-          
-          navigate('/rooms', { state: { response } });
+        // @todo check if we can impliment types here
+        console.log(response);
+
+        navigate("/rooms", { state: { response } });
       })
-      .catch((error) =>  {
+      .catch((error) => {
         console.error(error);
 
-        setLoginMsg(`We currenctly can not log you in...`)
-    });
+        setLoginMsg(`We currenctly can not log you in...`);
+      });
   }
 
   return (

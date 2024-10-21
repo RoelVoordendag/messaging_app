@@ -1,3 +1,3 @@
 export interface Room {
-    name: String,
+  name: String;
 }
