@@ -1,10 +1,15 @@
 import { useLocation } from "react-router-dom";
 import { UserRooms } from "../types/UserRooms";
-import CreateNewRoomButton from "../components/CreateNewRoomButton";
+import SideBar from "../components/Sidebar";
+import Topbar from "../components/Topbar";
 
 export default function Rooms() {
-  // @todo write error handling for this - Wtf is happening when there are no connected rooms?
+  // @todo write error handling for this 
   const { user, rooms } = JSON.parse(useLocation().state.response) as UserRooms;
+
+  console.log(JSON.parse(useLocation().state.response));
+
+  console.log(user, rooms);
 
   const handleOnClick = () => {
     console.log("lmao");
@@ -12,23 +17,22 @@ export default function Rooms() {
 
   return (
     <>
-      <p>hallo: {user.name}</p>
-      <div
-        className="bg-green-500"
-        style={{
-          width: "100vw",
-          height: "100vh",
-          /* Center the contents */
-          display: "flex",
-          justifyContent: "center",
-          alignContent: "center",
-        }}
-    >
-        {rooms.length == 0 && (
-          <>
-            <CreateNewRoomButton handleOnclick={handleOnClick} />
-          </>
-        )}
+      <div>
+        <SideBar />
+
+        <div className="lg:pl-72">
+          <Topbar />
+
+          <main className="h-screen flex items-center justify-center">
+            {rooms.length === 0 ? (
+              <div className="px-4 sm:px-6 lg:px-8">
+                <p>You currently have no rooms create one by pressing +</p>
+              </div>
+            ) : (
+              <p> there are rooms</p>
+            )}
+          </main>
+        </div>
       </div>
     </>
   );
