@@ -1,7 +1,7 @@
 export default function Topbar() {
   return (
     <>
-      <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
+      <div className="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 bg-gray-800 px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
         <button type="button" className="-m-2.5 p-2.5 text-gray-700 lg:hidden">
           <span className="sr-only">Open sidebar</span>
           <svg
@@ -31,7 +31,7 @@ export default function Topbar() {
           <form className="relative flex flex-1" action="#" method="GET">
             <label className="sr-only">Search</label>
             <svg
-              className="pointer-events-none absolute inset-y-0 left-0 h-full w-5 text-gray-400"
+              className="pointer-events-none absolute inset-y-0 left-1 h-full w-5 text-gray-400"
               viewBox="0 0 20 20"
               fill="currentColor"
               aria-hidden="true"
@@ -96,7 +96,7 @@ export default function Topbar() {
                     className="ml-4 text-sm font-semibold leading-6 text-gray-900"
                     aria-hidden="true"
                   >
-                    Tom Cook
+                    USER NAME HERE
                   </span>
                   <svg
                     className="ml-2 h-5 w-5 text-gray-400"
@@ -125,7 +125,7 @@ export default function Topbar() {
                 To: "transform opacity-0 scale-95"
             --> */}
               <div
-                className="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none"
+                className="absolute right-0 z-10 mt-2.5 w-32 origin-top-right rounded-md bg-white py-2 shadow-lg ring-1 ring-gray-900/5 focus:outline-none transform opacity-0 scale-95"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="user-menu-button"
