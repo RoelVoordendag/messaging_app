@@ -6,10 +6,8 @@ This template should help get you started developing with Tauri, React and Types
 
 - [VS Code](https://code.visualstudio.com/) + [Tauri](https://marketplace.visualstudio.com/items?itemName=tauri-apps.tauri-vscode) + [rust-analyzer](https://marketplace.visualstudio.com/items?itemName=rust-lang.rust-analyzer)
 
-## Todo
 
-- [ ] Install pretier lmao
-- [x] Install talwind
-- [ ] Create chat overview in sidebard
-- [ ] If no rooms create room
-  - [ ] Create room via endpoint but based on another user.
+
+## Docs
+
+https://stackoverflow.com/questions/78567007/how-do-i-solve-the-error-failed-to-resolve-import-src-lib-utils-from-does
