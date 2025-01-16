@@ -10,6 +10,7 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { fetch, Client } from "@tauri-apps/api/http";
 
 interface CreateRoomDialog {
   triggerComponent: any;
@@ -52,6 +53,12 @@ export function CreateRoomDialog({
               id="username"
               placeholder="Search person..."
               className="col-span-3"
+              onChange={(value) => {
+                console.log(value.currentTarget.value);
+                
+                fetch('')
+                
+              }}
             />
           </div>
         </div>
