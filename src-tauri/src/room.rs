@@ -1,7 +1,14 @@
+use dotenv::dotenv;
+
 #[tauri::command]
-async fn create_room () {
-    // @todo can we move this to a auto start?
+pub async fn create_room () {
     dotenv().ok();
 
-    println!("LMO");
+    println!("we are going to create a room");
+
+    let create_room_request = reqwest::Client::new().post("http://lmao.com")
+        .json(&serde_json::json!({"test": "fill with name"}))
+        .send()
+        .await;
+    
 }

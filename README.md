@@ -11,3 +11,4 @@ This template should help get you started developing with Tauri, React and Types
 ## Docs
 
 https://stackoverflow.com/questions/78567007/how-do-i-solve-the-error-failed-to-resolve-import-src-lib-utils-from-does
+https://www.developermindset.com/tauri-env/

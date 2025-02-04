@@ -2,6 +2,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 mod users;
+mod room;
 
 use dotenv::dotenv;
 use reqwest::Client;
@@ -31,8 +32,6 @@ async fn login_user(name: String) -> Result<String, String> {
         return Err("Something with the request went wrong".into());
     }
 
-    // We need to transform to text because array is returned not direct json.
-    // @todo can we returns Vector here? -> probs not
     let json_response: String = match response.text().await {
         Ok(json) => json,
         Err(_) => return Err("Failed to convert to json".into()),
@@ -43,7 +42,7 @@ async fn login_user(name: String) -> Result<String, String> {
 
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![login_user, users::get_users])
+        .invoke_handler(tauri::generate_handler![login_user, users::get_users, room::create_room])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }

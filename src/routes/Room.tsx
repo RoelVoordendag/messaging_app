@@ -13,7 +13,7 @@ export default function Rooms() {
   console.log(user, rooms);
 
   const handleOnClick = () => {
-    console.log("lmao");
+
   };
 
   return (
@@ -41,9 +41,6 @@ export default function Rooms() {
                         strokeWidth={1.5}
                         stroke="currentColor"
                         className="size-6"
-                        onSubmit={() => {
-                          console.log("log");
-                        }}
                       >
                         <path
                           strokeLinecap="round"
