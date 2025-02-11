@@ -1,14 +1,29 @@
 use dotenv::dotenv;
+use std::env;
 
 #[tauri::command]
-pub async fn create_room () {
-    dotenv().ok();
+pub async fn create_room () -> Result<String, String> {
 
-    println!("we are going to create a room");
+    let server_url = env::var("SERVER_URL").expect("The config is not correct");
 
-    let create_room_request = reqwest::Client::new().post("http://lmao.com")
+    let response: reqwest::Response  = match reqwest::Client::new().post(format!("{}/api/room", server_url))
         .json(&serde_json::json!({"test": "fill with name"}))
         .send()
-        .await;
+        .await 
+        {
+            Ok(res) => res,
+            Err(_) => return Err("Something went wrong with the request".into()),
+        };
     
+    
+    if !response.status().is_success() {
+        return Err("Something went wrong with the request".into());
+    }
+
+    let json_response: String = match response.text().await {
+        Ok(json) => json,
+        Err(_) => return Err("Failed to convert to json".into()),
+    };
+
+    Ok(json_response)
 }

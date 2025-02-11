@@ -18,7 +18,7 @@ async fn login_user(name: String) -> Result<String, String> {
 
     let client = Client::new();
 
-    let response = match client
+    let response: reqwest::Response = match client
         .post(format!("{}/api/users/create", server_url))
         .json(&serde_json::json!({"name":name}))
         .send()
